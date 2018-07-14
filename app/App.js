@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Tab from './tabs';
 import Store from './lib/zx';
-import * as register from './store/regisry';
+import * as register from './store';
 
 type Props = {};
 export default class App extends Component<Props> {

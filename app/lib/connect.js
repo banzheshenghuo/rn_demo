@@ -1,14 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
+import _ from 'lodash';
 
 import zx from './zx';
 
-export default function connect(Components, consumer) {
+export default function connect(Components, consumer, action) {
   class Wrapper extends React.Component {
     constructor(props) {
       super(props);
-      console.log('zx.create.result===>', zx.create.result);
-      this.state = consumer(zx.create.result).state;
+      this.state = consumer(zx.create._stores);
       this.key = Math.random();
     }
 
@@ -21,12 +21,17 @@ export default function connect(Components, consumer) {
     }
 
     _handleChangeState = (store) => {
-      const state = consumer(store)['state'];
+      const state = consumer(store);
       this.setState({ ...state });
     };
 
     render() {
-      return <Components {...this.props} {...this.state} />;
+      const actions = action();
+      const dispatcher = {};
+      _.forEach(actions, (fn, key) => {
+        dispatcher[key] = zx.dispatch(fn());
+      });
+      return <Components {...this.props} {...this.state} {...dispatcher} />;
     }
   }
 

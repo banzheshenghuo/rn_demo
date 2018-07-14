@@ -196,7 +196,8 @@
     "react/forbid-prop-types": 1,
     "arrow-parens": 0,
     "react/require-extension": "off",
-    "react/sort-comp": 1
+    "react/sort-comp": 1,
+    "prefer-destructuring":0
   },
   "settings": {
     "flowtype": {
