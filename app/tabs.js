@@ -5,6 +5,7 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import CustomBottomBar from './lib/CustomBottomBar';
 import HomeScreen from './tab/home';
 import OtherScreen from './tab/other';
+import ListScreen from './tab/list';
 
 const noHeader = {
   navigationOptions: {
@@ -15,7 +16,9 @@ const noHeader = {
 const HomeStack = createStackNavigator({
   Home: {
     screen: HomeScreen,
-    ...noHeader,
+  },
+  List: {
+    screen: ListScreen,
   },
 });
 
