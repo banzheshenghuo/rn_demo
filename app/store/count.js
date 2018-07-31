@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { ADD_COUNT } from '../action/count';
 
 const count = {
@@ -8,7 +9,7 @@ const count = {
   update(store, action) {
     const { type, payload = {} } = action;
     if (type === ADD_COUNT) {
-      return { size: store.size + 1 };
+      return { size: _.get(payload, 'path') };
     }
   },
 };

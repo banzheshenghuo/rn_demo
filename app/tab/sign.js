@@ -8,6 +8,9 @@ import { Button } from 'native-base';
 import SignatureCapture, { saveImageFileInExtStorage } from 'react-native-signature-capture';
 import _ from 'lodash';
 
+import connect from '../lib/connect';
+import { add } from '../action/count';
+
 type Props = {
   navigation: any,
 };
@@ -15,7 +18,7 @@ type Props = {
 type State = {
   signPath: string,
 };
-export default class SignScreen extends React.Component<Props, State> {
+class SignScreen extends React.Component<Props, State> {
   state = {
     signPath: '',
     reset: false,
@@ -31,11 +34,14 @@ export default class SignScreen extends React.Component<Props, State> {
   _onSaveEvent = (result) => {
     //result.encoded - for the base64 encoded png
     //result.pathName - for the file path name
+    const { add } = this.props;
     console.log(result);
     const path = _.get(result, 'pathName');
     if (path) {
       this.setState(({ reset }) => ({ signPath: path, reset: !reset }));
     }
+    add(path);
+    global.path = path;
   };
   _onDragEvent() {
     // This callback will be called when the user enters signature
@@ -105,3 +111,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
+export default connect(
+  SignScreen,
+  (store) => ({
+    count: store.count.state,
+  }),
+  () => ({
+    add,
+  }),
+);
