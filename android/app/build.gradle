@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-signature-capture')
     compile project(':react-native-pdf')
     compile project(':react-native-fs')
     compile project(':react-native-fetch-blob')

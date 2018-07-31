@@ -6,6 +6,7 @@ import CustomBottomBar from './lib/CustomBottomBar';
 import HomeScreen from './tab/home';
 import OtherScreen from './tab/other';
 import ListScreen from './tab/list';
+import SignScreen from './tab/sign';
 
 const noHeader = {
   navigationOptions: {
@@ -19,6 +20,9 @@ const HomeStack = createStackNavigator({
   },
   List: {
     screen: ListScreen,
+  },
+  Sign: {
+    screen: SignScreen,
   },
 });
 
