@@ -5,7 +5,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import { Button } from 'native-base';
 
-import SignatureCapture from 'react-native-signature-capture';
+import SignatureCapture, { saveImageFileInExtStorage } from 'react-native-signature-capture';
 import _ from 'lodash';
 
 type Props = {
@@ -55,7 +55,7 @@ export default class SignScreen extends React.Component<Props, State> {
           ref="sign"
           onSaveEvent={this._onSaveEvent}
           onDragEvent={this._onDragEvent}
-          saveImageFileInExtStorage={false}
+          saveImageFileInExtStorage
           showNativeButtons={false}
           showTitleLabel={false}
           viewMode={'portrait'}
