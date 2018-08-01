@@ -30,7 +30,7 @@ class ListScreen extends React.Component {
     return (
       <View style={{ marginTop: 100, alignItems: 'center' }}>
         <Text>List</Text>
-        <Image style={{ width: 300, height: 300 }} source={{ uri: path }} />
+        <Image style={{ width: 300, height: 300 }} resizeMode="contain" source={{ uri: path }} />
       </View>
     );
   }
